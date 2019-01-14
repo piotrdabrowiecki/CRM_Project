@@ -1,6 +1,10 @@
 package pl.coderslab.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +19,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private String surname;
 
+    @NotNull
     private String password;
 
-    @ManyToMany(mappedBy = "users")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany( mappedBy = "users", cascade = CascadeType.MERGE)
     private List<Project> projects = new ArrayList<>();
 
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany( mappedBy = "user", cascade = CascadeType.MERGE)
     private List<Task> tasks = new ArrayList<>();
 
 

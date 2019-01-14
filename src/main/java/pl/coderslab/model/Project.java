@@ -1,5 +1,7 @@
 package pl.coderslab.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -25,10 +27,11 @@ public class Project {
 
     private boolean activity;
 
+    @NotNull
     private String name;
 
-
-    @ManyToMany(fetch = FetchType.EAGER) //cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany()    //cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<User> users = new ArrayList<>();
 
     public List<User> getUsers() {
@@ -40,9 +43,11 @@ public class Project {
     }
 
 
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project", cascade = CascadeType.MERGE)
     private List<Task> tasks = new ArrayList<>();
+
+
+
 
 
 
@@ -53,6 +58,14 @@ public class Project {
     @CreatedDate
     private Date created;
 
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     public Long getId() {
         return id;
