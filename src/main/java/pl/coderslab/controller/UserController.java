@@ -8,9 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.coderslab.model.Project;
-import pl.coderslab.model.Task;
-import pl.coderslab.model.User;
+import org.springframework.web.bind.annotation.RequestParam;
+import pl.coderslab.model.*;
 import pl.coderslab.repository.*;
 
 import javax.validation.Valid;
@@ -80,6 +79,27 @@ public class UserController {
 
 
 
+    @ModelAttribute("statuses")
+    public List<Status> getStatuses(){
+
+
+        return statusRepository.findAll();
+
+    }
+
+    @ModelAttribute("priorities")
+    public List<Priority> getPriorities(){
+
+
+        return priorityRepository.findAll();
+
+    }
+
+
+
+
+
+
 
     @RequestMapping(value = "/users", produces = "text/html; charset=utf-8")
     public String viewBooks(Model model) {
@@ -114,12 +134,41 @@ public class UserController {
             return "/user/addUser";
 
         }
-
-
         userRepository.save(user);
 
-        return "redirect:/user/addUserTasks";
+        return "redirect:/user/addUserTasks?id=" + user.getId();
 
+
+    }
+
+    @RequestMapping(value = "/addUserTasks", method = RequestMethod.GET)
+    public String addUserTasks(Model model, @RequestParam long id){
+
+        User user = userRepository.findOne(id);
+
+        model.addAttribute("user", user);
+
+
+
+
+
+
+        return "/user/addUserTasks";
+
+
+
+    }
+
+    @RequestMapping(value = "/addUserTasks", method = RequestMethod.POST)
+    public String saveUserTasks(User user , BindingResult result) {
+
+        User fromDatabase = userRepository.findOne(user.getId());
+        fromDatabase.setProjects(user.getProjects());
+
+
+        userRepository.save(fromDatabase);
+
+        return "redirect:/user/users";
 
 
     }

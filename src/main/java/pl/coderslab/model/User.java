@@ -29,11 +29,11 @@ public class User {
     private String password;
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany( mappedBy = "users", cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Project> projects = new ArrayList<>();
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany( mappedBy = "user", cascade = CascadeType.MERGE)
+    @OneToMany( mappedBy = "user")
     private List<Task> tasks = new ArrayList<>();
 
 
@@ -88,11 +88,9 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", password='" + password + '\'' +
-                ", tasks=" + tasks +
                 '}';
     }
 

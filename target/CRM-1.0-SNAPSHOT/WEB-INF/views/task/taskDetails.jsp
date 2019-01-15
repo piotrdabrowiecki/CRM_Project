@@ -9,13 +9,44 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Task Details</title>
 </head>
 <body>
 
 
 
+<table border="4" bgcolor="#f0f8ff" >
 
+
+
+    <tr>
+        <td><b>Id</b></td>
+        <td><b>Subject</b></td>
+        <td><b>Description</b></td>
+        <td><b>Created</b></td>
+        <td><b>Project</b></td>
+        <td><b>Status</b></td>
+        <td><b>Priority</b></td>
+        <td><b>User</b></td>
+    </tr>
+
+
+
+    <tr>
+        <td>${taskDetails.id}</td>
+        <td>${taskDetails.subject}</td>
+        <td>${taskDetails.description}</td>
+        <td>${taskDetails.created}</td>
+        <td>${taskDetails.project}</td>
+        <td>${taskDetails.status}</td>
+        <td>${taskDetails.priority}</td>
+        <td>${taskDetails.user}</td>
+    </tr>
+
+
+
+
+</table>
 
 
 

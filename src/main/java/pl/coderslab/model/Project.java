@@ -31,7 +31,7 @@ public class Project {
     private String name;
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany()    //cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(mappedBy = "projects" , cascade = {CascadeType.MERGE})
     private List<User> users = new ArrayList<>();
 
     public List<User> getUsers() {
@@ -55,8 +55,8 @@ public class Project {
     @Size(max = 600)
     private String description;
 
-    @CreatedDate
-    private Date created;
+
+    private Date created = new Date();
 
 
     public List<Task> getTasks() {
@@ -119,11 +119,9 @@ public class Project {
     @Override
     public String toString() {
         return "Project{" +
-                "id=" + id +
                 ", www='" + www + '\'' +
                 ", activity=" + activity +
                 ", name='" + name + '\'' +
-                ", users=" + users +
                 ", description='" + description + '\'' +
                 ", created=" + created +
                 '}';

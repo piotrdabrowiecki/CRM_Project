@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.model.Project;
 import pl.coderslab.model.Task;
 import pl.coderslab.model.User;
@@ -58,7 +59,7 @@ public class ProjectController {
 
     }
 
-    @ModelAttribute("projects")
+    @ModelAttribute("projectsTasks")
     public List<Task> getTasksByProjectId(Long id){
 
 
@@ -107,6 +108,78 @@ public class ProjectController {
         model.addAttribute("projects", projects);
 
         return "/project/projects";
+
+
+
+    }
+
+    @RequestMapping("/projectDetails")
+    public String projectDetails(@RequestParam long id, Model model){
+
+        Project projectDetails = projectRepository.findOne(id);
+
+        model.addAttribute("projectDetails", projectDetails);
+
+
+        return "/project/projectDetails";
+
+
+
+    }
+
+
+    @RequestMapping("/deleteProject")
+    public String deleteProject(@RequestParam long id){
+
+
+        Project deleteProject = projectRepository.findOne(id);
+
+        projectRepository.delete(deleteProject);
+
+
+        return "redirect:/project/projects";
+
+
+
+    }
+
+
+    @RequestMapping(value = "/editProject", method = RequestMethod.GET)
+    public String update(@RequestParam long id, Model model){
+
+
+        Project editProject = projectRepository.findOne(id);
+
+        model.addAttribute("editProject", editProject);
+
+
+        return "/project/editProject";
+
+
+
+    }
+    @RequestMapping(value = "/editProject", method = RequestMethod.POST)
+    public String updated(@ModelAttribute Project project, Model model){
+
+
+        projectRepository.save(project);
+
+
+        return "redirect:/project/projects";
+
+
+
+    }
+
+    @RequestMapping("/projectTasks")
+    public String projectTasks(@RequestParam long id, Model model){
+
+        Project projectTasks = projectRepository.findOne(id);
+
+        model.addAttribute("projectTasks", projectTasks);
+
+
+        return "/project/projectTasks";
 
 
 

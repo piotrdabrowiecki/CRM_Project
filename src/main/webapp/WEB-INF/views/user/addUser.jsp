@@ -38,7 +38,7 @@
 
 
     <td><b>Projects</b></td>
-    <form:select path="projects">
+    <form:select path="projects" multiple="true">
         <form:options items="${projects}" itemValue ="id" itemLabel="name" />
     </form:select>
     <form:errors path ="projects" />

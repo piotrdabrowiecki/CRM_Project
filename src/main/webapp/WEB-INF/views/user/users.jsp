@@ -27,7 +27,8 @@
          <td><b>Name</b></td>
          <td><b>Surname</b></td>
          <td><b>Password</b></td>
-         <td><b>Tasks</b></td>
+         <td><b>User's tasks</b></td>
+         <td><b>User's projects</b></td>
      </tr>
 
 
@@ -46,6 +47,15 @@
                    <li>${task.subject}</li>
 
                 </c:forEach>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <c:forEach items="${user.projects}" var="project">
+
+                        <li>${project.name}</li>
+
+                    </c:forEach>
                 </ul>
             </td>
         </tr>

@@ -23,9 +23,13 @@
         <td><b>Description</b></td>
         <td><b>Created</b></td>
         <td><b>WWW</b></td>
-
         <td><b>Project's users</b></td>
         <td><b>Project's tasks</b></td>
+
+        <td><b>list of Project's tasks</b></td>
+        <td><b>Project's details</b></td>
+        <td><b>edit Project</b></td>
+        <td><b>delete Project</b></td>
     </tr>
 
 
@@ -56,6 +60,10 @@
                     </c:forEach>
                 </ul>
             </td>
+            <td><a href="/CRM_war_exploded/project/projectTasks?id=${project.id}">list of Project's tasks</a></td>
+            <td><a href="/CRM_war_exploded/project/projectDetails?id=${project.id}">Project's details</a></td>
+            <td><a href="/CRM_war_exploded/project/editProject?id=${project.id}">edit Project</a></td>
+            <td><a href="/CRM_war_exploded/project/deleteProject?id=${project.id}">delete Project</a></td>
         </tr>
 
 

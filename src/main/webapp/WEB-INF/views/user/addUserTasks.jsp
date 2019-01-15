@@ -8,27 +8,48 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
-    <title>Title</title>
+    <title>add User Tasks</title>
 </head>
 <body>
 
 
-// tutaj maja sie dodawac te taski ktore sa dostepne dla wczesniej wybranych dla danego usera projektow //
+<form:form modelAttribute = "user" method = "post" >
+
+    <%--<form:errors path = "*" /> --%>
 
 
 
-<%--
+    <c:forEach items="${user.projects}" var="project">
 
-  <td><b>Tasks</b></td>
-  <form:select path="tasks">
-      <form:options items="${tasks}" itemValue ="id" itemLabel="subject" />
-  </form:select>
-  <form:errors path ="tasks" />
+        ${project.name}
+
+        <form:select path="tasks" multiple="true">
+            <form:options items="${project.tasks}" itemValue="id" itemLabel="subject"/>
+        </form:select>
 
 
---%>
+
+    </c:forEach>
+
+
+
+    <input type = "submit" value="AddUser" />
+
+
+
+
+</form:form>
+
+
+
+
+
+
+
+
 
 
 

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import pl.coderslab.converter.*;
 
 
 import javax.persistence.EntityManagerFactory;
@@ -53,8 +54,11 @@ import java.util.Locale;
         @Override
         public void addFormatters(FormatterRegistry registry) {
 
-
-
+            registry.addConverter(getPriorityConverter());
+            registry.addConverter(getProjectConverter());
+            registry.addConverter(getStatusConverter());
+            registry.addConverter(getTaskConverter());
+            registry.addConverter(getUserConverter());
 
 
         }
@@ -69,20 +73,57 @@ import java.util.Locale;
 
 
 
-        @Bean
+          @Bean
           public Validator validator() {
               return new LocalValidatorFactoryBean();
         }
 
 
 
+          @Bean
+          public PriorityConverter getPriorityConverter(){
+
+            return new PriorityConverter();
+
+          }
+
+          @Bean
+          public ProjectConverter getProjectConverter(){
+
+            return new ProjectConverter();
+
+          }
+
+          @Bean
+          public StatusConverter getStatusConverter(){
+
+            return new StatusConverter();
+
+          }
+
+          @Bean
+          public TaskConverter getTaskConverter(){
+
+            return new TaskConverter();
+
+          }
+
+          @Bean
+          public UserConverter getUserConverter(){
+
+            return new UserConverter();
+
+          }
 
 
 
 
 
 
-    }
+
+
+
+}
 
 
 

@@ -33,6 +33,8 @@ public class Task {
     private Project project;
 
 
+
+
     @OneToOne(cascade = CascadeType.MERGE)
     @NotNull
     private Status status;
@@ -45,6 +47,9 @@ public class Task {
     @ManyToOne(cascade = CascadeType.MERGE)
     @NotNull
     private User user;
+
+
+
 
 
     public Long getId() {
@@ -116,14 +121,9 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "id=" + id +
                 ", created=" + created +
                 ", subject='" + subject + '\'' +
                 ", description='" + description + '\'' +
-                ", project=" + project +
-                ", status=" + status +
-                ", priority=" + priority +
-                ", user=" + user +
                 '}';
     }
 
