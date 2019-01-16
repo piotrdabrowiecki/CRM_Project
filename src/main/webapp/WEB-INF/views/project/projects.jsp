@@ -10,17 +10,24 @@
 <html>
 <head>
     <title>Project List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
+<h2>Project List</h2>
 
-<table border="4" bgcolor="#b0c4de" >
+
+<div class="container">
+<table border="4" bgcolor="#b0c4de" class="table">
 
 
 
     <tr>
         <td><b>Project's Name</b></td>
         <td><b>Description</b></td>
+        <td><b>Activity</b></td>
         <td><b>Created</b></td>
         <td><b>WWW</b></td>
         <td><b>Project's users</b></td>
@@ -39,6 +46,7 @@
         <tr>
             <td>${project.name}</td>
             <td>${project.description}</td>
+            <td>${project.activity}</td>
             <td>${project.created}</td>
             <td>${project.www}</td>
             <td>
@@ -74,9 +82,13 @@
 
 
 </table>
+</div>
 
-
-
+<br>
+<br>
+<td><b>Return to admin page</b></td>
+<br>
+<td><a href="/CRM_war_exploded/admin/admin">Admin Main Page</a></td>
 
 
 

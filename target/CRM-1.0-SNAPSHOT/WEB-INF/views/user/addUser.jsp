@@ -31,6 +31,11 @@
     <form:errors path ="surname" />
     <br>
 
+    <td><b>Login</b></td>
+    <form:input path = "login" />
+    <form:errors path ="login" />
+    <br>
+
     <td><b>Password</b></td>
     <form:input path = "password" />
     <form:errors path ="password" />
@@ -42,6 +47,7 @@
         <form:options items="${projects}" itemValue ="id" itemLabel="name" />
     </form:select>
     <form:errors path ="projects" />
+
 
 
 

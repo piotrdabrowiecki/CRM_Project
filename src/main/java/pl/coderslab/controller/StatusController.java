@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.model.*;
 import pl.coderslab.repository.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/status")
@@ -122,6 +124,45 @@ public class StatusController {
 
 
     }
+
+    @RequestMapping(value = "/editStatus", method = RequestMethod.GET)
+    public String update(Model model){
+
+
+        List<Status> statuses = statusRepository.findAll();
+
+        model.addAttribute("statuses", statuses);
+
+
+        return "/status/editStatus";
+
+
+
+    }
+    @RequestMapping(value = "/editStatus", method = RequestMethod.POST)
+    public String updated(@RequestParam Map<String, String> parameters, Model model){
+
+
+        for (String param : parameters.keySet()) {
+            if (param.startsWith("status")) {
+                String id = param.split("-")[1];
+                Status status = statusRepository.findOne(Long.valueOf(id));
+                String value = parameters.get(param);
+                status.setActivity(Boolean.parseBoolean(value));
+                statusRepository.save(status);
+
+            }
+        }
+
+
+
+        return "redirect:/status/statuses";
+
+
+
+    }
+
+
 
 
     @RequestMapping(value = "/statuses", produces = "text/html; charset=utf-8")

@@ -1,6 +1,7 @@
 package pl.coderslab.controller;
 
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -127,14 +128,20 @@ public class UserController {
 
     }
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public String saveBook(@Valid User user, BindingResult result) {
+    public String saveUser(@Valid User user, BindingResult result) {
 
         if (result.hasErrors()) {
 
             return "/user/addUser";
 
         }
+
+        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+
         userRepository.save(user);
+
+
+
 
         return "redirect:/user/addUserTasks?id=" + user.getId();
 
@@ -163,12 +170,57 @@ public class UserController {
     public String saveUserTasks(User user , BindingResult result) {
 
         User fromDatabase = userRepository.findOne(user.getId());
-        fromDatabase.setProjects(user.getProjects());
-
-
-        userRepository.save(fromDatabase);
+        for (Task task : user.getTasks()) {
+            task.setUser(fromDatabase);
+            taskRepository.save(task);
+        }
+        fromDatabase.setTasks(user.getTasks());
 
         return "redirect:/user/users";
+
+
+    }
+
+
+
+    @RequestMapping(value = "/editUser", method = RequestMethod.GET)
+    public String updateUser(@RequestParam long id, Model model){
+
+
+        User editUser = userRepository.findOne(id);
+
+        model.addAttribute("editUser", editUser);
+
+
+        return "/user/editUser";
+
+
+
+    }
+    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
+    public String updatedUser(@ModelAttribute User user, Model model){
+
+
+        userRepository.save(user);
+
+
+        return "redirect:/user/users";
+
+
+
+    }
+
+    @RequestMapping("/deleteUser")
+    public String deleteUser(@RequestParam long id){
+
+
+        User deleteUser = userRepository.findOne(id);
+
+        userRepository.delete(deleteUser);
+
+
+        return "redirect:/user/users";
+
 
 
     }

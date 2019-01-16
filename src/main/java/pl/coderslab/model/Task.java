@@ -18,8 +18,7 @@ public class Task {
     private Long id;
 
 
-    @CreatedDate
-    private Date created;
+    private Date created = new Date();
 
 
     private String subject;
@@ -35,16 +34,16 @@ public class Task {
 
 
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     @NotNull
     private Status status;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     @NotNull
     private Priority priority;
 
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @NotNull
     private User user;
 

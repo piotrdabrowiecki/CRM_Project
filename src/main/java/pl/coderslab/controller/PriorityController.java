@@ -15,6 +15,7 @@ import pl.coderslab.repository.*;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/priority")
@@ -120,6 +121,44 @@ public class PriorityController {
 
 
     }
+
+    @RequestMapping(value = "/editPriority", method = RequestMethod.GET)
+    public String update(Model model){
+
+
+        List<Priority> priority = priorityRepository.findAll();
+
+        model.addAttribute("priority", priority);
+
+
+        return "/priority/editPriority";
+
+
+
+    }
+    @RequestMapping(value = "/editPriority", method = RequestMethod.POST)
+    public String updated(@RequestParam Map<String, String> parameters, Model model){
+
+
+        for (String param : parameters.keySet()) {
+            if (param.startsWith("priority")) {
+                String id = param.split("-")[1];
+                Priority priority = priorityRepository.findOne(Long.valueOf(id));
+                String value = parameters.get(param);
+                priority.setActivity(Boolean.parseBoolean(value));
+                priorityRepository.save(priority);
+
+            }
+        }
+
+
+
+        return "redirect:/priority/priorities";
+
+
+
+    }
+
 
 
     @RequestMapping(value = "/priorities", produces = "text/html; charset=utf-8")

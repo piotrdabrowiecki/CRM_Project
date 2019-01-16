@@ -8,6 +8,7 @@ import pl.coderslab.model.Task;
 import pl.coderslab.model.User;
 
 
+import java.util.Date;
 import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
@@ -15,6 +16,11 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
 
     List<Project> findByUsersId(Long UserId);
+
+
+
+    List<Project> findFirst5ByOrderByCreatedDesc();
+
 
 
 

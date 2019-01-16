@@ -2,6 +2,8 @@ package pl.coderslab.model;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 
 @Entity
 @Table(name = "projects")
@@ -23,15 +26,50 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    @URL
     private String www;
 
+    @NotNull
     private boolean activity;
+
+   /*
+    private String Identifier(String name){
+
+        StringTokenizer tokenizer = new StringTokenizer(name, " ");
+
+        StringBuilder builder = new StringBuilder();
+
+        while (tokenizer.hasMoreElements()) {
+
+            String token = tokenizer.nextElement().toString();
+
+            builder.append(token+"-");
+
+        }
+
+        String identifier = builder.toString();
+
+        return identifier;
+
+    }
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    */
 
     @NotNull
     private String name;
 
+
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany(mappedBy = "projects" , cascade = {CascadeType.MERGE})
+    @ManyToMany(mappedBy = "projects" , cascade = {CascadeType.MERGE} )
     private List<User> users = new ArrayList<>();
 
     public List<User> getUsers() {
@@ -42,11 +80,9 @@ public class Project {
         this.users = users;
     }
 
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project", cascade = CascadeType.MERGE)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "project" , cascade = CascadeType.MERGE)
     private List<Task> tasks = new ArrayList<>();
-
-
 
 
 

@@ -10,6 +10,9 @@
 <html>
 <head>
     <title>User List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -17,18 +20,22 @@
 <h2>User List</h2>
 <br>
 <br>
-
-<table border="4" bgcolor="#E0FFFF" >
+<div class="container">
+<table border="4" bgcolor="#E0FFFF" class="table">
 
 
 
      <tr>
          <td><b>Id</b></td>
          <td><b>Name</b></td>
+         <td><b>Login</b></td>
          <td><b>Surname</b></td>
          <td><b>Password</b></td>
          <td><b>User's tasks</b></td>
          <td><b>User's projects</b></td>
+
+         <td><b>edit User</b></td>
+         <td><b>delete User</b></td>
      </tr>
 
 
@@ -38,13 +45,14 @@
         <tr>
             <td>${user.id}</td>
             <td>${user.name}</td>
+            <td>${user.login}</td>
             <td>${user.surname}</td>
             <td>${user.password}</td>
             <td>
                 <ul>
                 <c:forEach items="${user.tasks}" var="task">
 
-                   <li>${task.subject}</li>
+                   <li>task name:${task.subject} - active:${task.status.activity} - from project: ${task.project.name}</li>
 
                 </c:forEach>
                 </ul>
@@ -58,6 +66,8 @@
                     </c:forEach>
                 </ul>
             </td>
+            <td><a href="/CRM_war_exploded/user/editUser?id=${user.id}">edit User</a></td>
+            <td><a href="/CRM_war_exploded/user/deleteUser?id=${user.id}">delete User</a></td>
         </tr>
 
     </c:forEach>
@@ -67,6 +77,12 @@
 
 
 </table>
+</div>
+<br>
+<br>
+<td><b>Return to admin page</b></td>
+<br>
+<td><a href="/CRM_war_exploded/admin/admin">Admin Main Page</a></td>
 
 
 

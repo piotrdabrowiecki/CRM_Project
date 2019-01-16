@@ -13,8 +13,6 @@ import java.util.List;
 public class User {
 
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,17 +23,31 @@ public class User {
     @NotNull
     private String surname;
 
+
+
+    @Column(unique = true)
+    private String login;
+
+
     @NotNull
     private String password;
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = {CascadeType.MERGE})
     private List<Project> projects = new ArrayList<>();
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany( mappedBy = "user")
+    @OneToMany( mappedBy = "user", cascade = CascadeType.MERGE)
     private List<Task> tasks = new ArrayList<>();
 
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
     public Long getId() {
         return id;

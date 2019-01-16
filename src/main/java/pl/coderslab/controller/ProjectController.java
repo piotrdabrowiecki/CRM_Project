@@ -17,6 +17,7 @@ import pl.coderslab.repository.*;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.List;
+import java.util.ListIterator;
 
 @Controller
 @RequestMapping("/project")
@@ -64,6 +65,23 @@ public class ProjectController {
 
 
         return taskRepository.findByProjectId(id);
+
+    }
+
+    @ModelAttribute("users")
+    public List<User> getUsers(){
+
+
+        return userRepository.findAll();
+
+    }
+
+
+    @ModelAttribute("tasks")
+    public List<Task> getTasks(){
+
+
+        return taskRepository.findAll();
 
     }
 
@@ -160,6 +178,7 @@ public class ProjectController {
     }
     @RequestMapping(value = "/editProject", method = RequestMethod.POST)
     public String updated(@ModelAttribute Project project, Model model){
+
 
 
         projectRepository.save(project);

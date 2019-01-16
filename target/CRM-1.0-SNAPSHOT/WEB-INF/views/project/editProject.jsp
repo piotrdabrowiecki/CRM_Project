@@ -28,14 +28,15 @@
     <td><b>Activity</b></td><br>
     <form:input path = "activity" /><br>
 
-    <td><b>Project's users</b></td><br>
+    <td><b>Change users</b></td><br>
     <form:select path="users" multiple="true">
-        <form:options items="${users}" itemValue ="id" itemLabel="name" path="users.id" />
+        <form:options items="${users}" itemValue ="id" itemLabel="name" />
     </form:select>
     <br>
-    <td><b>Project's tasks</b></td><br>
+
+    <td><b>Change tasks</b></td><br>
     <form:select path="tasks" multiple="true">
-        <form:options items="${tasks}" itemValue="id" itemLabel="subject"/>
+        <form:options items="${tasks}" itemValue="id" itemLabel="subject" />
     </form:select>
 
 

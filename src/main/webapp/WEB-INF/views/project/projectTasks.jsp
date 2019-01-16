@@ -39,6 +39,8 @@
                     <li>${task.status}</li>
                     <li>${task.priority}</li>
                     <li>${task.user}</li>
+                    <li>--------------------------------------------------------------------</li>
+                    <br>
 
                 </c:forEach>
             </ul>
