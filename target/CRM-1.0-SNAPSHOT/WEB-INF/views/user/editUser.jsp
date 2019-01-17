@@ -11,6 +11,8 @@
 <html>
 <head>
     <title>edit User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
 </head>
 <body>
 
@@ -26,7 +28,8 @@
     <form:input path = "surname" /><br>
     <td><b>Password</b></td><br>
     <form:input path = "password" /><br>
-
+    <td><b>Login</b></td><br>
+    <form:input path = "login" /><br>
 
     <td><b>Choose Projects</b></td><br>
     <form:select path="projects" multiple="true">

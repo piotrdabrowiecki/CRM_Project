@@ -2,6 +2,7 @@ package pl.coderslab.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "statuses")
@@ -12,10 +13,13 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private boolean activity;
 
+    @NotNull
     private int sorted;
 
     public Long getId() {

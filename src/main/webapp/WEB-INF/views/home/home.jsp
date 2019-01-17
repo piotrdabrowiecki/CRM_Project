@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>Home Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
 </head>
 <body>
 
@@ -33,7 +35,7 @@
 <table border="4" bgcolor="#b0c4de" >
 
 
-    <tr>
+    <tr class="dark">
         <td><b>Project's Name</b></td>
         <td><b>Description</b></td>
         <td><b>Created</b></td>

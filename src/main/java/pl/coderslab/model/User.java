@@ -26,6 +26,7 @@ public class User {
 
 
     @Column(unique = true)
+    @NotNull
     private String login;
 
 
@@ -33,8 +34,10 @@ public class User {
     private String password;
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany(cascade = {CascadeType.MERGE})
+    @ManyToMany
+    @JoinTable(name = "users_projects", joinColumns = @JoinColumn(name = "users_id"), inverseJoinColumns = @JoinColumn(name = "projects_id"))
     private List<Project> projects = new ArrayList<>();
+
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany( mappedBy = "user", cascade = CascadeType.MERGE)
@@ -99,11 +102,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "User: " +
+                "  " + name + " " + surname +
+                ", password ='" + password + '\'' +
+                " ";
     }
 
 

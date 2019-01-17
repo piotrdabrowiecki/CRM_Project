@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
 </head>
 <body>
 
@@ -24,7 +25,7 @@
 
 
 
-    <tr>
+    <tr class="dark">
         <td><b>Project's Name</b></td>
         <td><b>Description</b></td>
         <td><b>Activity</b></td>
@@ -37,7 +38,7 @@
         <td><b>Project's details</b></td>
         <td><b>edit Project</b></td>
         <td><b>delete Project</b></td>
-    </tr>
+    <tr>
 
 
     <c:forEach items="${projects}" var="project">
@@ -49,12 +50,13 @@
             <td>${project.activity}</td>
             <td>${project.created}</td>
             <td>${project.www}</td>
-            <td>
+            <td width="70%">
                 <ul>
                     <c:forEach items="${project.users}" var="user">
 
-                        <li>${user.name}</li>
-                        <li>${user.surname}</li>
+                        <p><span class="glyphicon glyphicon-user"></span></p>
+                        <li>${user.name} ${user.surname}</li>
+
 
                     </c:forEach>
                 </ul>
@@ -63,6 +65,7 @@
                 <ul>
                     <c:forEach items="${project.tasks}" var="task">
 
+                        <p><span class="glyphicon glyphicon-tasks"></span></p>
                         <li>${task.subject}</li>
 
                     </c:forEach>
@@ -86,9 +89,8 @@
 
 <br>
 <br>
-<td><b>Return to admin page</b></td>
 <br>
-<td><a href="/CRM_war_exploded/admin/admin">Admin Main Page</a></td>
+<td><a href="/CRM_war_exploded/admin/admin" class="linkPosition">Admin Main Page</a></td>
 
 
 

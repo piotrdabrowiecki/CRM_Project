@@ -20,14 +20,15 @@ public class Task {
 
     private Date created = new Date();
 
-
+    @NotNull
     private String subject;
+
 
     private String description;
 
 
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @NotNull
     private Project project;
 

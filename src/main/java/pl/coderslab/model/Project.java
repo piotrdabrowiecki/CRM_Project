@@ -69,7 +69,8 @@ public class Project {
 
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany(mappedBy = "projects" , cascade = {CascadeType.MERGE} )
+    @ManyToMany
+    @JoinTable(name = "users_projects", joinColumns = @JoinColumn(name = "projects_id"), inverseJoinColumns = @JoinColumn(name = "users_id"))
     private List<User> users = new ArrayList<>();
 
     public List<User> getUsers() {
@@ -81,7 +82,7 @@ public class Project {
     }
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "project" , cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "project" )
     private List<Task> tasks = new ArrayList<>();
 
 
