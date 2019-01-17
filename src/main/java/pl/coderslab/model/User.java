@@ -40,7 +40,7 @@ public class User {
 
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany( mappedBy = "user", cascade = CascadeType.MERGE)
+    @OneToMany( mappedBy = "user", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Task> tasks = new ArrayList<>();
 
 

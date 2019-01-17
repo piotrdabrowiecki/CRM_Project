@@ -29,7 +29,7 @@ public class Task {
 
 
     @ManyToOne
-    @NotNull
+    @JoinColumn(name = "project_id")
     private Project project;
 
 
@@ -45,7 +45,6 @@ public class Task {
 
 
     @ManyToOne
-    @NotNull
     private User user;
 
 

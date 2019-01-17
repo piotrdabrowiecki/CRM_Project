@@ -60,13 +60,7 @@ public class ProjectController {
 
     }
 
-    @ModelAttribute("projectsTasks")
-    public List<Task> getTasksByProjectId(Long id){
 
-
-        return taskRepository.findByProjectId(id);
-
-    }
 
     @ModelAttribute("users")
     public List<User> getUsers(){
@@ -151,7 +145,12 @@ public class ProjectController {
 
 
         Project deleteProject = projectRepository.findOne(id);
+        for (Task task : deleteProject.getTasks()) {
+            task.setProject(null);
+            taskRepository.save(task);
+        }
 
+        deleteProject.getTasks().clear();
         projectRepository.delete(deleteProject);
 
 
@@ -179,7 +178,10 @@ public class ProjectController {
     @RequestMapping(value = "/editProject", method = RequestMethod.POST)
     public String updated(@ModelAttribute Project project, Model model){
 
-
+//        for (Task task : project.getTasks()) {
+//            task.setProject(project);
+//            taskRepository.save(task);
+//        }
 
         projectRepository.save(project);
 

@@ -82,7 +82,8 @@ public class Project {
     }
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "project" )
+    @OneToMany
+    @JoinColumn(name = "project_id")
     private List<Task> tasks = new ArrayList<>();
 
 

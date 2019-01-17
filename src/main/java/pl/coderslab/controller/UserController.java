@@ -60,15 +60,6 @@ public class UserController {
 
 
 
-    @ModelAttribute("tasks")
-    public List<Task> getTasks(Long id){
-
-
-        return taskRepository.findByUserId(id);
-
-    }
-
-
     @ModelAttribute("users")
     public List<User> getUsers(){
 
@@ -215,6 +206,13 @@ public class UserController {
 
 
         User deleteUser = userRepository.findOne(id);
+
+        for (Task task : deleteUser.getTasks()) {
+            task.setUser(null);
+            taskRepository.save(task);
+        }
+
+        deleteUser.getTasks().clear();
 
         userRepository.delete(deleteUser);
 
