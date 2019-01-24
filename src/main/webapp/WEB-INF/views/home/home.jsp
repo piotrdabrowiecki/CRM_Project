@@ -9,31 +9,32 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
     <title>Home Page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
+
 </head>
+
 <body>
 
+<ul class="ul2">
+
+
+    <li class="li2"><a href="/CRM_war_exploded/user/registerUser">REGISTER</a></li>
+    <li class="li2"><a href="/CRM_war_exploded/user/loginUser">LOGIN</a></li>
+
+</ul>
 
 
 
 
 
 
+<table  bgcolor="#b0c4de" >
 
-
-
-
-
-
-
-
-
-
-
-<table border="4" bgcolor="#b0c4de" >
-
+    <tr class="dark">
+        <td height="50" colspan="6" style="font-size: 25px;">5 most recent projects</td>
+    </tr>
 
     <tr class="dark">
         <td><b>Project's Name</b></td>

@@ -6,6 +6,27 @@
 
 }
 
+
+body {
+
+    display: block;
+
+
+    margin: auto;
+
+    background-image: url('1.jpg');
+
+    background-repeat: no-repeat;
+
+    background-size: 100%;
+
+
+}
+
+
+
+
+
 div {
 
 
@@ -14,34 +35,39 @@ div {
 
 table {
 
-    border-collapse:separate;
-    border:solid dimgray 2px;
-    border-radius:10px;
-    -moz-border-radius:6px;
+
+
+
+
+    border-radius: 10px;
+
+    border-color: steelblue;
+
+
 
     font:normal 14px/22px "DejaVu Serif", Sans-Serif;
 
+    font-size: 20px;
 
-    margin-top:10%;
 
-    margin-right:50%;
 
-    min-width: 300px;
+    margin: 20px auto;
+
+    min-width: 1000px;
 
     text-align:center;
 
+    background-color: ghostwhite;
 
-
-
+    opacity: 0.9;
 
 
 }
 
 td, th {
-    border-left:solid dimgray 1px;
-    border-top:solid dimgray 1px;
-    border-bottom:solid dimgray 1px;
-    border-right:solid dimgray 1px;
+
+    border: solid dimgray 1px;
+
 
     min-width: 60px;
 
@@ -49,19 +75,14 @@ td, th {
 
 th {
 
-    border-top: solid dimgray 1px;
-
+    border: solid dimgray 1px;
 
 
 }
 
 td:first-child, th:first-child {
 
-    border-left: solid dimgray 1px;
-    border-top:solid dimgray 1px;
-    border-bottom:solid dimgray 1px;
-    border-right:solid dimgray 1px;
-
+    border: solid dimgray 1px;
 
 
 }
@@ -69,33 +90,16 @@ td:first-child, th:first-child {
 
 .dark {
 
-    background-color: midnightblue;
+    background-color: #335258;
     color: floralwhite;
 
 }
 
 
 
-
-
-
-a:link, a:visited {
-    background-color: lightgray;
-    color: black;
-    padding: 13px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-flex;
-
-    width: 220px;
-    height: 50px;
-
-    border-radius: 10px
-
-}
-
 a:hover, a:active {
-    background-color: lightblue;
+    background-color: #658C93;
+
 }
 
 
@@ -118,6 +122,7 @@ label{
     text-align: right;
 
 }
+
 input {
 
     display: block;
@@ -127,16 +132,17 @@ input {
 
 
 select {
+
     cursor:pointer;
     display:block;
     position:relative;
 
     font:normal 18px/22px "DejaVu Serif", Sans-Serif;
     color:black;
-    border:1px solid #ccc;
+    border:2px solid #ccc;
 
 
-    width: 170px;
+    width: 240px;
 
     border-radius: 8px;
 
@@ -163,6 +169,9 @@ form {
     -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 
 
+    background-color: ghostwhite;
+
+
 }
 
 
@@ -172,8 +181,8 @@ input[type=submit]{
 
     width: 260px;
     height: 35px;
-    background: lightgray;
-    border: 1px lightgray;
+    background: lightsteelblue;
+    border: 1px lightskyblue;
     cursor: pointer;
     border-radius: 15px;
     color: black;
@@ -193,12 +202,16 @@ input[type=submit]:hover{
 
 input[type=submit]:active{
     opacity: 0.6;
+
+
 }
 
 
 
 input[type=submit]:focus{
-    outline: none;
+
+
+
 }
 
 
@@ -218,13 +231,15 @@ title {
 }
 
 
+
 h2 {
 
-    position: absolute;
-    left: 400px;
-    top: 30px;
+    position: relative;
+
+    margin: 0px auto;
 
 }
+
 
 
 .linkPosition {
@@ -238,16 +253,75 @@ h2 {
 }
 
 
-li {
+
+
+
+
+.ul2 {
 
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.li2 {
+    float: right;
+}
+
+
+li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #658C93;
+}
+
+
+a {
+
+
+    background-color: #335258;
+    box-shadow: 0 5px 0 #32464A;
+    color: white;
+
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    display: block;
+
 
 
 }
 
-ul{
 
-    list-style-type: none;
+.a {
+
+
+    display: inline-flex;
+    margin: 0px auto;
+
+}
+
+
+
+
+.relative {
+
+    position: relative;
+    left: 30px;
 
 
 }

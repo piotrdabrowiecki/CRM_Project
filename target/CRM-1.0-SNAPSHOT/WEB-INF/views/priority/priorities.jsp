@@ -12,7 +12,6 @@
     <title>Priorities List</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
 </head>
 <body>
@@ -58,8 +57,9 @@
 <br>
 <br>
 <br>
-<td><a href="/CRM_war_exploded/admin/admin" class="linkPosition">Admin Main Page</a></td>
-
+<span class="a">
+<td class="a"><a href="/CRM_war_exploded/admin/admin" class="linkPosition">Admin Main Page</a></td>
+</span>
 
 </body>
 </html>

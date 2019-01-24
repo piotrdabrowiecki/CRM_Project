@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.model.*;
 import pl.coderslab.repository.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.List;
@@ -189,13 +190,26 @@ public class UserController {
 
     }
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
-    public String updatedUser(@ModelAttribute User user, Model model){
+    public String updatedUser(@ModelAttribute User user, Model model, HttpSession session, @RequestParam long id){
 
+        User editUser = userRepository.findOne(id);
+
+        model.addAttribute(editUser);
 
         userRepository.save(user);
 
+        if(session.getAttribute("login") != "admin"){
 
-        return "redirect:/user/users";
+            return "redirect:/user/loggedUserView?id=" + editUser.getId();
+
+        }
+        else{
+
+            return "redirect:/user/users";
+
+        }
+
+
 
 
 

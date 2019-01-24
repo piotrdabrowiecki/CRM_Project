@@ -10,7 +10,6 @@
 <html>
 <head>
     <title>User List</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
@@ -29,8 +28,8 @@
      <tr class="dark">
          <td><b>Id</b></td>
          <td><b>Name</b></td>
-         <td><b>Login</b></td>
          <td><b>Surname</b></td>
+         <td><b>Login</b></td>
          <td><b>Password</b></td>
          <td><b>User's tasks</b></td>
          <td><b>User's projects</b></td>
@@ -46,8 +45,8 @@
         <tr>
             <td>${user.id}</td>
             <td>${user.name}</td>
-            <td>${user.login}</td>
             <td>${user.surname}</td>
+            <td>${user.login}</td>
             <td>${user.password}</td>
             <td>
                 <ul>
@@ -82,8 +81,9 @@
 <br>
 <br>
 <br>
-<td><a href="/CRM_war_exploded/admin/admin" class="linkPosition">Admin Main Page</a></td>
-
+<span class="a">
+<td class="a"><a href="/CRM_war_exploded/admin/admin" class="linkPosition">Admin Main Page</a></td>
+</span>
 
 
 
