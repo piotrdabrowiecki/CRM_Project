@@ -13,7 +13,7 @@
     <title>User</title>
     <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
 </head>
-<body>
+<body class="admin">
 
 
 

@@ -23,7 +23,8 @@ public class User {
     @NotNull
     private String surname;
 
-
+    @Transient
+    private boolean active;
 
     @Column(unique = true)
     @NotNull
@@ -43,6 +44,14 @@ public class User {
     @OneToMany( mappedBy = "user", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Task> tasks = new ArrayList<>();
 
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public String getLogin() {
         return login;

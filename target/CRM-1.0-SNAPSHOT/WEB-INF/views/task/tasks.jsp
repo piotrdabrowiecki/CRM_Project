@@ -14,7 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
 </head>
-<body>
+<body class="admin">
 
 
 <h2>Task List</h2>

@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Edit Task</title>
     <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
 </head>
 <body>

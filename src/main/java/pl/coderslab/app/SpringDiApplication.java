@@ -8,6 +8,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+import static com.sun.corba.se.impl.util.RepositoryId.cache;
+
 public class SpringDiApplication implements WebApplicationInitializer {
 
 
@@ -25,6 +27,7 @@ public class SpringDiApplication implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
 
         servlet.addMapping("/");
+
 
 
 

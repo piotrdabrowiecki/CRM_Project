@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
 import javax.validation.Valid;
 import javax.validation.Validator;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -117,39 +118,44 @@ public class LoginController {
 
         User loginUser = userRepository.findByLogin(login);
 
+        if(loginUser != null) {
 
-        String databasePassword = userRepository.findOne(loginUser.getId()).getPassword();
+            String databasePassword = userRepository.findOne(loginUser.getId()).getPassword();
 
-        boolean passwordCheck = BCrypt.checkpw(password, databasePassword);
-
-
-
-
-        if (loginUser != null && passwordCheck && !login.equals("admin")) {
-
-            session.setAttribute("login", user.getLogin());
-            session.setAttribute("password", user.getPassword());
-            session.setAttribute("user", user);
-
-            return "redirect:/user/loggedUserView?id=" + loginUser.getId();
-
-        }
-        else if(login.equals("admin")){
+            boolean passwordCheck = BCrypt.checkpw(password, databasePassword);
 
 
-            return "redirect:/admin/admin";
+            if (passwordCheck && !login.equals("admin")) {
+
+                session.setAttribute("login", user.getLogin());
+                session.setAttribute("password", user.getPassword());
+                session.setAttribute("user", user);
+
+                loginUser.setActive(true);
+
+                return "redirect:/user/loggedUserView?id=" + loginUser.getId();
+
+            }
+            else if (passwordCheck && login.equals("admin")) {
+
+
+                loginUser.setActive(true);
+
+                return "redirect:/admin/admin";
+
+            }
 
         }
         else{
 
-            model.addAttribute("error", "Błędny login lub hasło");
+
             return "/user/loginUser";
 
 
         }
 
 
-
+        return"/user/loginUser";
 
 
 
@@ -159,6 +165,7 @@ public class LoginController {
     public String logout(HttpSession session) {
 
         session.invalidate();
+
 
         return "redirect:/home/home";
 
@@ -176,6 +183,10 @@ public class LoginController {
         model.addAttribute(loggedUser);
 
 
+
+
+
+
         return "/user/loggedUserView";
 
 
@@ -187,8 +198,10 @@ public class LoginController {
 
         User loggedUser = userRepository.findOne(id);
 
-        model.addAttribute(loggedUser);
+        List<Project> userProjects = projectRepository.findByUsersId(id);
 
+        model.addAttribute("loggedUser", loggedUser);
+        model.addAttribute("userProjects",userProjects);
 
         return "/user/userProjects";
 
@@ -196,6 +209,17 @@ public class LoginController {
 
     }
 
+    public boolean isDateValid(Date created, Date calendar){
+
+        if(created.equals(calendar)){
+
+            return true;
+
+
+        }
+
+        return false;
+    }
 
 
 

@@ -13,7 +13,7 @@
     <title>Add New Task</title>
     <link rel="stylesheet" href="/CRM_war_exploded/css/style.css">
 </head>
-<body>
+<body class="admin">
 
 
 <form:form modelAttribute = "task" method = "post" >

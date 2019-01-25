@@ -198,7 +198,7 @@ public class UserController {
 
         userRepository.save(user);
 
-        if(session.getAttribute("login") != "admin"){
+        if(!session.getAttribute("login").equals("admin")){
 
             return "redirect:/user/loggedUserView?id=" + editUser.getId();
 
@@ -216,7 +216,7 @@ public class UserController {
     }
 
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam long id){
+    public String deleteUser(@RequestParam long id, HttpSession session, Model model){
 
 
         User deleteUser = userRepository.findOne(id);
@@ -230,8 +230,27 @@ public class UserController {
 
         userRepository.delete(deleteUser);
 
+        if(deleteUser.isActive()) {
 
-        return "redirect:/user/users";
+            session.setAttribute("user", null);
+            session.invalidate();
+
+        }
+
+        String login = session.getAttribute("login").toString();
+
+        if(login.equals("admin")){
+
+
+            return "redirect:/user/users";
+
+        }
+        else{
+
+            return "redirect:/home/home";
+
+            }
+
 
 
 
