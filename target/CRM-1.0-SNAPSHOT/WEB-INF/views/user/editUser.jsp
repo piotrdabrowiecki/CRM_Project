@@ -31,7 +31,7 @@
     <form:input path = "login" /><br>
 
     <td><b>Choose Projects</b></td><br>
-    <form:select path="projects" multiple="true">
+    <form:select path="projects" multiple="true" cssClass="select">
         <form:options items="${projects}" itemValue ="id" itemLabel="name" />
     </form:select>
     <br>

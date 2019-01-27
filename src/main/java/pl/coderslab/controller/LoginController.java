@@ -13,6 +13,8 @@ import pl.coderslab.model.*;
 import pl.coderslab.repository.*;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
 import javax.validation.Valid;
@@ -110,8 +112,10 @@ public class LoginController {
 
     }
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
-    public String loginUser(Model model, User user, HttpSession session) {
+    public String loginUser(Model model, User user, HttpServletRequest request, HttpServletResponse response) {
 
+
+        HttpSession session = request.getSession(false);
 
         String password = user.getPassword();
         String login = user.getLogin();
@@ -119,6 +123,7 @@ public class LoginController {
         User loginUser = userRepository.findByLogin(login);
 
         if(loginUser != null) {
+
 
             String databasePassword = userRepository.findOne(loginUser.getId()).getPassword();
 
@@ -138,6 +143,9 @@ public class LoginController {
             }
             else if (passwordCheck && login.equals("admin")) {
 
+                session.setAttribute("login", user.getLogin());
+                session.setAttribute("password", user.getPassword());
+                session.setAttribute("user", user);
 
                 loginUser.setActive(true);
 

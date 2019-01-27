@@ -119,11 +119,11 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return
                 ", created=" + created +
                 ", subject='" + subject + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+                ", description='" + description + '\''
+                ;
     }
 
 

@@ -75,7 +75,7 @@
 <br>
 <br>
 <span class="a">
-<td class="a"><a href="/CRM_war_exploded/admin/admin" class="linkPosition">Admin Main Page</a></td>
+<a href="/CRM_war_exploded/admin/admin" class="link">Admin Main Page</a>
 </span>
 
 

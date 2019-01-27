@@ -47,11 +47,11 @@ public class Priority {
 
     @Override
     public String toString() {
-        return "Priority{" +
+        return
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", activity=" + activity +
-                '}';
+                ", activity=" + activity
+                ;
     }
 
 

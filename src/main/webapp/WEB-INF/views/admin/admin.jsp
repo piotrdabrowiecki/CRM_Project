@@ -23,7 +23,7 @@
 
 
 <div class="container">
-<table border="4"  bgcolor="#E0FFFF" class="table">
+<table border="4"  bgcolor="#C3F1FD" class="table">
 
     <tr>
 <td><b>Projects</b></td>
@@ -70,8 +70,19 @@
 
 
 <span class="a">
-    <td><a href="/CRM_war_exploded/user/logout">Logout</a></td>
+    <a class="link" href="/CRM_war_exploded/user/logout">Logout</a>
 </span>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

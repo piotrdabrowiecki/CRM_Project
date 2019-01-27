@@ -198,7 +198,13 @@ public class UserController {
 
         userRepository.save(user);
 
-        if(!session.getAttribute("login").equals("admin")){
+        // String login = editUser.getLogin();
+
+        String sessionLogin = session.getAttribute("login").toString();
+
+
+
+        if(!sessionLogin.equals("admin")){
 
             return "redirect:/user/loggedUserView?id=" + editUser.getId();
 
@@ -255,8 +261,6 @@ public class UserController {
 
 
     }
-
-
 
 
 

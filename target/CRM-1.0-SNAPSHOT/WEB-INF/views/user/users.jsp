@@ -66,8 +66,8 @@
                     </c:forEach>
                 </ul>
             </td>
-            <td><a href="/CRM_war_exploded/user/editUser?id=${user.id}">edit User</a></td>
-            <td><a href="/CRM_war_exploded/user/deleteUser?id=${user.id}">delete User</a></td>
+            <td><c:if test="${user.login !='admin'}"><a href="/CRM_war_exploded/user/editUser?id=${user.id}">edit User</a></c:if></td>
+            <td><c:if test="${user.login !='admin'}"><a href="/CRM_war_exploded/user/deleteUser?id=${user.id}">delete User</a></c:if></td>
         </tr>
 
     </c:forEach>
@@ -82,7 +82,7 @@
 <br>
 <br>
 <span class="a">
-<td class="a"><a href="/CRM_war_exploded/admin/admin" class="linkPosition">Admin Main Page</a></td>
+<a href="/CRM_war_exploded/admin/admin" class="link">Admin Main Page</a>
 </span>
 
 

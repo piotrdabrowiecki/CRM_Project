@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.model.*;
 import pl.coderslab.repository.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Validator;
 import java.util.List;
 
@@ -89,7 +90,7 @@ public class HomeController {
 
 
     @RequestMapping(value = "/home", produces = "text/html; charset=utf-8")
-    public String viewHome(Model model) {
+    public String viewHome(Model model, HttpSession session) {
 
 
         List<Project> projects = projectRepository.findFirst5ByOrderByCreatedDesc();
