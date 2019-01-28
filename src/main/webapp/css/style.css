@@ -35,16 +35,16 @@ body {
 
 
     background-image: url('2.jpg');
-
-
+    background-size: 100%;
+    background-repeat: no-repeat;
 
 
 }
 .admin{
 
     background-image: url('4.jpg');
-
-
+    background-size: 100%;
+    background-repeat: no-repeat;
 
 }
 
@@ -88,6 +88,10 @@ table {
     opacity: 0.80;
 
 
+
+
+
+
 }
 
 td, th {
@@ -98,8 +102,21 @@ td, th {
     min-width: 60px;
 
 
+    word-wrap:break-word;
+
 
 }
+
+
+.tasks{
+
+    max-width: 220px;
+
+
+
+}
+
+
 
 th {
 

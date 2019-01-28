@@ -51,7 +51,7 @@
             <td>${task.created}</td>
             <td>${task.status}</td>
             <td>${task.priority}</td>
-            <td>${task.user}</td>
+            <td class="tasks">${task.user}</td>
 
             <td>${task.project}</td>
 

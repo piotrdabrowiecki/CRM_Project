@@ -40,7 +40,6 @@
             <td>${status.id}</td>
             <td>${status.name}</td>
             <td>${status.activity}</td>
-            <td><a href="/CRM_war_exploded/status/deleteStatus?id=${status.id}">delete Status</a></td>
         </tr>
 
 

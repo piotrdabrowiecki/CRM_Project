@@ -39,7 +39,6 @@
             <td>${priority.id}</td>
             <td>${priority.name}</td>
             <td>${priority.activity}</td>
-            <td><a href="/CRM_war_exploded/priority/deletePriority?id=${priority.id}">delete Priority</a></td>
         </tr>
 
 
